@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget Paycheck Planner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">GitHub Pages Budget App</p>
+        <h1>Budget Paycheck Planner</h1>
+        <p class="subtext">Enter your paycheck, add your monthly bills, and instantly see your estimated yearly budget.</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Income</h2>
+        <div class="form-grid">
+          <label>
+            Paycheck amount
+            <input id="paycheckAmount" type="number" min="0" step="0.01" placeholder="1200" />
+          </label>
+
+          <label>
+            Paid how often?
+            <select id="payFrequency">
+              <option value="52">Weekly (52)</option>
+              <option value="26" selected>Biweekly (26)</option>
+              <option value="24">Twice a month (24)</option>
+              <option value="12">Monthly (12)</option>
+            </select>
+          </label>
+
+          <label>
+            Extra monthly income
+            <input id="extraMonthlyIncome" type="number" min="0" step="0.01" placeholder="0" />
+          </label>
+
+          <label>
+            Yearly savings goal
+            <input id="yearlySavingsGoal" type="number" min="0" step="0.01" placeholder="5000" />
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title-row">
+          <h2>Monthly Bills</h2>
+          <button id="addBillBtn" class="secondary-btn" type="button">+ Add Bill</button>
+        </div>
+
+        <div id="billList" class="bill-list"></div>
+
+        <div class="totals-inline">
+          <span>Total monthly bills</span>
+          <strong id="monthlyBillsTotal">$0.00</strong>
+        </div>
+      </section>
+
+      <section class="card results-card full-width">
+        <h2>Budget Results</h2>
+        <div class="results-grid">
+          <div class="result-box">
+            <span>Monthly income</span>
+            <strong id="monthlyIncomeResult">$0.00</strong>
+          </div>
+          <div class="result-box">
+            <span>Yearly income</span>
+            <strong id="yearlyIncomeResult">$0.00</strong>
+          </div>
+          <div class="result-box">
+            <span>Yearly bills</span>
+            <strong id="yearlyBillsResult">$0.00</strong>
+          </div>
+          <div class="result-box">
+            <span>Left after bills (monthly)</span>
+            <strong id="leftAfterBillsMonthly">$0.00</strong>
+          </div>
+          <div class="result-box">
+            <span>Left after bills (yearly)</span>
+            <strong id="leftAfterBillsYearly">$0.00</strong>
+          </div>
+          <div class="result-box accent">
+            <span>Year-end after savings goal</span>
+            <strong id="yearEndBudget">$0.00</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <template id="billRowTemplate">
+    <div class="bill-row">
+      <input class="bill-name" type="text" placeholder="Rent" />
+      <input class="bill-amount" type="number" min="0" step="0.01" placeholder="1450" />
+      <button class="danger-btn remove-bill" type="button">Remove</button>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
